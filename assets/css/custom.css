@@ -1,0 +1,37 @@
+.media-body {
+    -ms-flex: 1;
+    flex: 1;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.text-small {
+    font-weight: normal;
+}
+
+
+
+.contrib-column {
+	font-size: 12px;
+}
+
+.contrib-number {
+    font-weight: 400;
+}
+
+.table-column {
+	display: inline-block;
+	width: 100%;
+	font-size: 14px;
+}
+
+ul.gha-commits {
+    padding-inline-start: 20px;
+}
+
+@media (min-width: 992px) {
+	.table-column {
+		display: inline-block;
+		width: 33.33333%;
+	}
+}
