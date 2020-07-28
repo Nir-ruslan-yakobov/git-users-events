@@ -7,6 +7,8 @@
  * http://opensource.org/licenses/MIT
  */
 
+let info = []
+
 var GitHubActivity = (function () {
   'use strict';
 
@@ -183,9 +185,7 @@ var GitHubActivity = (function () {
         if (request.readyState === 4) {
           if (request.status >= 200 && request.status < 300) {
             var data = JSON.parse(request.responseText);
-            // if (data.length > 1) {
-            //   console.log(data)
-            // }
+            catchData(data)
             callback(undefined, data);
 
           } else {
@@ -275,6 +275,7 @@ var GitHubActivity = (function () {
 
   return obj;
 }());
+
 
 // Takes in milliseconds and converts it to a human readable time,
 // such as 'about 3 hours ago' or '23 days ago'
