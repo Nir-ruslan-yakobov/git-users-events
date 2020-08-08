@@ -55,6 +55,6 @@ function gitActivity(name) {
 }
 
 
-// getUserProfiles((usersProfiles) => {
-// 	displayListProfiles(usersProfiles)
-// })
+getUserProfiles((usersProfiles) => {
+ 	displayListProfiles(usersProfiles)
+})

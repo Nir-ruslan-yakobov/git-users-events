@@ -315,3 +315,13 @@ span.gha-time {
   cursor: pointer;
   font-weight: bold;
 }
+
+.col-lg-6 {
+  display: flex;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+}
+
+.list-separated-item img.avatar {
+  background-color: #ffffff;
+}
