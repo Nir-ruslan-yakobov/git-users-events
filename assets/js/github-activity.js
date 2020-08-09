@@ -289,7 +289,7 @@ var GitHubActivity = (function () {
 
     methods.getOutputFromRequest(eventsUrl, function (error, output) {
       let set
-      events.length == 5 ? [...events, output] : events
+      events = events.length > 5 ? [...events, output] : events
       set = events.length == 5 ? events[0] : output
       if (error) {
         activity = Mustache.render(templates.EventsNotFound, { username: options.username });
