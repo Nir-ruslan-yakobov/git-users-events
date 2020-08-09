@@ -7,26 +7,17 @@
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------
 
+const userService = new UserService()
 
-// ברזיליאוס תפעיל את זה
-
-
-function getLocalData() {
-	return JSON.parse(localStorage.getItem('user'))
-}
-
-
-function findUser(username) {
-	return getLocalData().find((user) => user.login == username)
-}
-
-
-async function getUserEvents(e) {
+function onGetUserEvents(e) {
 	let userName = e.target.id
-	TamplateService.dispayCard(findUser(userName))
+	TamplateService.dispayCard(userService.findUser(userName))
 	gitActivity(userName)
 }
 
+
+// קורניליוס תפעיל פה
+initUsers()
 
 function gitActivity(name) {
 	GitHubActivity.feed({
@@ -37,7 +28,7 @@ function gitActivity(name) {
 }
 
 
-async function getProfiles() {
+async function initUsers() {
 	let profiles = []
 	FetchData.fetchUsersJson('../users.json').then(async (result) => {
 		console.log(result)
@@ -45,22 +36,18 @@ async function getProfiles() {
 			const profile = await FetchData.fetchUsersProfile('https://api.github.com/users/', user.name)
 			TamplateService.dispayProfile(profile)
 
-
 			profiles = [...profiles, profile]
 		}
-		localStorage.setItem('user', JSON.stringify(profiles))
+
+		userService.saveLocalStorege(profiles)
 
 		TamplateService.dispayCard(profiles[0])
+
 		gitActivity(profiles[0].login)
 	})
 }
 
 
-
-// קורניליוס תפעיל פה
-(function (global) {
-	global.getProfiles()
-})(window)
 
 
 

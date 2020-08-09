@@ -12,7 +12,7 @@ class Tamplate {
              <div class="col">
                 <div>
                     <a  
-                        onclick="getUserEvents(event)"
+                        onclick="onGetUserEvents(event)"
                         class="text-inherit"
                         id="${user.login}"
                         >
@@ -60,6 +60,8 @@ class TamplateService {
         cardBody.innerHTML = Tamplate.cardTamplate(profile)
     }
 
+
+    // לא בשימוש
     static displayListProfiles(usersProfiles) {
         const list = document.querySelector('.list-unstyled')
 

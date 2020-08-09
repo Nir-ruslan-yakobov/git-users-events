@@ -9,35 +9,12 @@
  */
 
 
-// function Profile() {
-//   this.profiles = []
-
-//   this.setProfile = function (profile) {
-//     this.profiles.push(profile)
-//   }
-
-
-//   this.getProfiles = function () {
-//     return this.profiles
-//   }
-
-//   this.getInstance = function () {
-
-//   }
-// }
-
-
-
-
-
 
 var GitHubActivity = (function () {
     'use strict';
 
     var obj = {};
 
-    let events = []
-    let profiles = []
 
     var methods = {
         renderLink: function (url, title, cssClass) {
@@ -228,7 +205,6 @@ var GitHubActivity = (function () {
             //     }).catch((error) => {
             //         callback('An error occurred connecting to ' + url)
             //     })
-
             request.onerror = function () { callback('An error occurred connecting to ' + url); };
             request.send();
         },
@@ -301,7 +277,7 @@ var GitHubActivity = (function () {
         // });
 
         methods.getOutputFromRequest(eventsUrl, function (error, output) {
-            console.log(output, options)
+            // console.log(output, options)
             if (error) {
                 activity = Mustache.render(templates.EventsNotFound, { username: options.username });
             } else {

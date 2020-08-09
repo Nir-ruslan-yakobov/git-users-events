@@ -1,25 +1,15 @@
-// class Profile {
+class UserService {
 
-//     constructor() {
-//         if (Profile.instanse == null) {
-//             this.profiles = []
-//             Profile.instanse = this
-//         }
+    saveLocalStorege(profiles) {
+        localStorage.setItem('user', JSON.stringify(profiles))
+    }
 
-//         return Profile.instanse
+    get getLocalStorage() {
+        return JSON.parse(localStorage.getItem('user'))
+    }
 
-//     }
+    findUser(userName) {
+        return this.getLocalStorage.find((user) => user.login == userName)
+    }
 
-//     setProfile(profile) {
-//         this.profiles.push(profile)
-//     }
-
-//     getProfiles() {
-//         return this.profiles
-//     }
-// }
-
-// const profile = new Profile()
-// Object.freeze(profile)
-
-// export default profile
+}
