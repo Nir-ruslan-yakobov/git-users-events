@@ -3,12 +3,16 @@
 // 	tooltips: true
 // });
 
+
+
 // -------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
 let user = []
 
+
+init()
 
 function getLocalData() {
 	return JSON.parse(localStorage.getItem('user'))
@@ -50,14 +54,18 @@ function init() {
 			await gitActivity(user)
 		}
 
+
 		const progiles = await getLocalData()
+		console.log(progiles)
 		TamplateService.displayListProfiles(progiles)
 		TamplateService.dispayCard(progiles[0])
 	})
 }
 
 
-init()
+
+// ברזיליאוס תפעיל את זה
+
 
 
 
