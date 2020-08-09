@@ -5,12 +5,36 @@
  * Copyright (c) 2015 Casey Scarborough
  * MIT License
  * http://opensource.org/licenses/MIT
+ * 
  */
+// function Profile() {
+//   this.profiles = []
+
+//   this.setProfile = function (profile) {
+//     this.profiles.push(profile)
+//   }
+
+
+//   this.getProfiles = function () {
+//     return this.profiles
+//   }
+
+//   this.getInstance = function () {
+
+//   }
+// }
+
+
+
+
+
 
 var GitHubActivity = (function () {
   'use strict';
 
   var obj = {};
+
+  let events = []
 
   var methods = {
     renderLink: function (url, title, cssClass) {
@@ -183,8 +207,8 @@ var GitHubActivity = (function () {
         if (request.readyState === 4) {
           if (request.status >= 200 && request.status < 300) {
             var data = JSON.parse(request.responseText);
-            // if (data.length > 1) {
-            //   console.log(data)
+            // if (data.constructor === Object) {
+            //   catchDataProfiles(data)
             // }
             callback(undefined, data);
 
@@ -254,6 +278,7 @@ var GitHubActivity = (function () {
     }
 
     methods.getOutputFromRequest(userUrl, function (error, output) {
+      catchDataProfiles(output)
       if (error) {
         header = Mustache.render(templates.UserNotFound, { username: options.username });
       } else {
@@ -263,11 +288,15 @@ var GitHubActivity = (function () {
     });
 
     methods.getOutputFromRequest(eventsUrl, function (error, output) {
+      let set
+      events = [...events, output]
+      set = events.length == 5 ? events[0] : output
       if (error) {
         activity = Mustache.render(templates.EventsNotFound, { username: options.username });
       } else {
         var limit = options.limit != 'undefined' ? parseInt(options.limit, 10) : null;
-        activity = methods.getActivityHTML(output, limit);
+        activity = methods.getActivityHTML(set, limit);
+
       }
       methods.renderIfReady(selector, header, activity);
     });
@@ -275,6 +304,10 @@ var GitHubActivity = (function () {
 
   return obj;
 }());
+
+
+
+
 
 // Takes in milliseconds and converts it to a human readable time,
 // such as 'about 3 hours ago' or '23 days ago'

@@ -52,11 +52,28 @@ class Tamplate {
        </div>
         `
     }
+}
 
 
-    // static dispayCard(profile) {
-    //     const cardBody = document.querySelector('.col-lg-6')
-    //     console.log(cardBody)
-    //     cardBody.innerHTML = Tamplate.cardTamplate(profile)
-    // }
+class TamplateService {
+
+    static dispayCard(profile) {
+        const cardBody = document.querySelector('.col-lg-6')
+        cardBody.innerHTML = Tamplate.cardTamplate(profile)
+    }
+
+    static displayListProfiles(usersProfiles) {
+        const list = document.querySelector('.list-unstyled')
+
+        let body = ''
+        for (let i = 0; i < usersProfiles.length; i++) {
+            body += Tamplate.listTamplate(usersProfiles[i])
+        }
+        list.innerHTML = body
+    }
+
+    static dispayProfile(profile) {
+        const list = document.querySelector('.list-unstyled')
+        list.innerHTML += Tamplate.listTamplate(profile)
+    }
 }
