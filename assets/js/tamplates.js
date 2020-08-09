@@ -1,7 +1,6 @@
 class Tamplate {
 
     static listTamplate(user) {
-        console.log(user)
         return `
          <li class="list-separated-item"> 
            <div class="row align-items-center">
@@ -17,7 +16,6 @@ class Tamplate {
                         class="text-inherit"
                         id="${user.login}"
                         >
-
                         ${user.login}
                     </a>
                 </div>

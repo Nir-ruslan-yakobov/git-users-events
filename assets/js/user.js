@@ -1,25 +1,25 @@
-class Profile {
+// class Profile {
 
-    constructor() {
-        if (Profile.instanse == null) {
-            this.profiles = []
-            Profile.instanse = this
-        }
+//     constructor() {
+//         if (Profile.instanse == null) {
+//             this.profiles = []
+//             Profile.instanse = this
+//         }
 
-        return Profile.instanse
+//         return Profile.instanse
 
-    }
+//     }
 
-    setProfile(profile) {
-        this.profiles.push(profile)
-    }
+//     setProfile(profile) {
+//         this.profiles.push(profile)
+//     }
 
-    getProfiles() {
-        return this.profiles
-    }
-}
+//     getProfiles() {
+//         return this.profiles
+//     }
+// }
 
-const profile = new Profile()
-Object.freeze(profile)
+// const profile = new Profile()
+// Object.freeze(profile)
 
-export default profile
+// export default profile

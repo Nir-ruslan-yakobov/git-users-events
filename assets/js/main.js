@@ -10,10 +10,6 @@
 
 // ברזיליאוס תפעיל את זה
 
-let user = []
-
-
-init()
 
 function getLocalData() {
 	return JSON.parse(localStorage.getItem('user'))
@@ -41,37 +37,30 @@ function gitActivity(name) {
 }
 
 
-function catchDataProfiles(data) {
-	user.push(data)
-	localStorage.setItem('user', JSON.stringify(user))
-}
-
-
-function init() {
+async function getProfiles() {
+	let profiles = []
 	FetchData.fetchUsersJson('../users.json').then(async (result) => {
-		for (let i = 0; i < result.length; i++) {
-			console.log(i, 'Fetching')
-			let user = result[i].name
-			await gitActivity(user)
+		console.log(result)
+		for (user of result) {
+			const profile = await FetchData.fetchUsersProfile('https://api.github.com/users/', user.name)
+			TamplateService.dispayProfile(profile)
+
+
+			profiles = [...profiles, profile]
 		}
+		localStorage.setItem('user', JSON.stringify(profiles))
 
-
-		const progiles = await getLocalData()
-		console.log(progiles)
-		TamplateService.displayListProfiles(progiles)
-		TamplateService.dispayCard(progiles[0])
+		TamplateService.dispayCard(profiles[0])
+		gitActivity(profiles[0].login)
 	})
 }
 
 
 
-
-
-
-
-
-
-
+// קורניליוס תפעיל פה
+(function (global) {
+	global.getProfiles()
+})(window)
 
 
 
