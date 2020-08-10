@@ -7,6 +7,7 @@ class FetchData {
                 .then((result) => {
                     resolve(result)
                 })
+                .catch((error) => alert('Problem whit josn file'))
         })
     }
 
@@ -17,6 +18,7 @@ class FetchData {
                 .then((result) => {
                     resolve(result)
                 })
+                .catch((error) => alert('Problem gir api'))
         })
     }
 

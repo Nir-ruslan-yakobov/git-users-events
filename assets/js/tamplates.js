@@ -29,18 +29,18 @@ class Tamplate {
     static cardTamplate(user) {
         return `
         <div class="card card-profile">
-        <div
+           <div
             class="card-header"
             style="background-image: url(https://pbs.twimg.com/profile_banners/929646774381199360/1591279543/1500x500);"
-        ></div>
+             ></div>
         <div class="card-body text-center">
             <img
                 class="card-profile-img"
                 src="${user.avatar_url}"
             >
-            <h3 class="mb-3">${user.name}</h3>
+            <h3 class="mb-3">${user.name ? user.name : user.login}</h3>
             <p class="mb-4">
-                ${user.bio}
+                ${user.bio ? user.boi : 'Not seeting yet'}
             </p>
             <button class="btn btn-outline-primary btn-sm">
                 <span class="fa fa-twitter"></span>

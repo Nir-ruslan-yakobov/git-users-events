@@ -12,7 +12,7 @@
 }
 
 .contrib-column {
-	font-size: 12px;
+    font-size: 12px;
 }
 
 .contrib-number {
@@ -20,9 +20,9 @@
 }
 
 .table-column {
-	display: inline-block;
-	width: 100%;
-	font-size: 14px;
+    display: inline-block;
+    width: 100%;
+    font-size: 14px;
 }
 
 ul.gha-commits {
@@ -30,14 +30,14 @@ ul.gha-commits {
 }
 
 @media (min-width: 992px) {
-	.table-column {
-		display: inline-block;
-		width: 33.33333%;
-	}
+    .table-column {
+        display: inline-block;
+        width: 33.33333%;
+    }
 }
 
 @media (max-width: 768px) {
-.media-body .float-right {
-    float:none !important;
-}
+    .media-body .float-right {
+        float: none !important;
+    }
 }

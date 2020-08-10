@@ -11,7 +11,7 @@ const userService = new UserService()
 
 function onGetUserEvents(e) {
 	let userName = e.target.id
-	TamplateService.dispayCard(userService.findUser(userName))
+	TamplateService.dispayCard(userService.findUser(userName).profile)
 	gitActivity(userName)
 }
 
@@ -29,23 +29,26 @@ function gitActivity(name) {
 
 
 async function initUsers() {
-	let profiles = []
 	FetchData.fetchUsersJson('../users.json').then(async (result) => {
 		console.log(result)
 		for (user of result) {
 			const profile = await FetchData.fetchUsersProfile('https://api.github.com/users/', user.name)
-			TamplateService.dispayProfile(profile)
 
-			profiles = [...profiles, profile]
+			TamplateService.dispayProfile(profile)
+			userService.setProfile(profile)
 		}
 
-		userService.saveLocalStorege(profiles)
 
-		TamplateService.dispayCard(profiles[0])
+		const firstProfile = userService.profiles[0].profile
 
-		gitActivity(profiles[0].login)
+		TamplateService.dispayCard(firstProfile)
+
+		gitActivity(firstProfile.login)
+
+		userService.saveLocalStorege()
 	})
 }
+
 
 
 
